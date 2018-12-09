@@ -1,6 +1,7 @@
 package filesRead;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,6 +12,13 @@ import java.util.stream.Collectors;
 public class Ex1 {
 
     public static void main(String[] args) throws IOException {
+
+        //moje rozwiazanie (w pliku wynikowym zapisywane tylko pierwsze linie z plikow)
+
+//        Znajdź wszystkie pliki w dowolnym katalogu na dysku (oraz jego
+//        podkatalogach) z rozszerzeniem txt, następnie odczytaj pierwszą linię
+//        każdego z nich i zapisz do nowego pliku txt w formacie:
+//        NAZWA_PLIKU – PIERWSZA_LINIA_Z_PLIKU
 
         List<String> resultList = new ArrayList<>();
 
@@ -30,7 +38,10 @@ public class Ex1 {
 
         Files.write(path1, listOfFirstLines);
 
-    }
+        //rozwiazanie z zajec (uzupelnic)
 
+
+
+    }
 
 }
