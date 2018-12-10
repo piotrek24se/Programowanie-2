@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 
 public class Pracownik {
 
+    //dokonczyc validator i punkty 5,6
+
     private String imie;
     private String nazwisko;
     private Long id;
@@ -36,12 +38,13 @@ public class Pracownik {
 
         Files.lines(path).forEach(p -> listWithData.add(p));
 
-        //validator (dokonczyc i poprawic - podkresla na czerwono wyrazenie w lambdzie)
+        //validator (dokonczyc)
 
-//        listWithData = validateAndFilter(listWithData);
+        List<String> validatedList = validateAndFilter(listWithData);
 
 
-        List<String[]> listOfArrays = listWithData.stream().map(
+
+        List<String[]> listOfArrays = validatedList.stream().map(
                 p -> p.split(" ")).collect(Collectors.toList());
 
         listOfArrays.stream()

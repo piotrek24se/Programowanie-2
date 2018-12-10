@@ -26,7 +26,7 @@ public class App {
     private static void filtrowanie() throws IOException {
         //metadane - dane opisujace dane (atrybuty)
         Path path = Paths.get("C:\\Users\\Piotr\\Desktop\\JAVA");
-        Files.walk(path, 3).filter(p->p.toString().endsWith(".txt")).forEach(System.out::println); // jezeli maxDepth = 0 to jest to to samo co metoda list
+        Files.walk(path, 3).filter(p -> p.toString().endsWith(".txt")).forEach(System.out::println); // jezeli maxDepth = 0 to jest to to samo co metoda list
     }
 
     private static void zapisDoPliku() throws IOException {

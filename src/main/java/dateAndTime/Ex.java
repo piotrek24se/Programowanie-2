@@ -9,7 +9,7 @@ public class Ex {
 //    2. Napisz metodę, która dla podanego roku wyświetli listę miesięcy
 //    wraz z ich długością (ilością dni).
 //    3. Napisz metodę, która dla zadanego miesiąca z bieżącego roku
-//    wyświetli wszystkie poniedziałki.
+//    wyświetli wszystkie poniedziałki. (dokonczyc)
 
     public static void main(String[] args) {
 
