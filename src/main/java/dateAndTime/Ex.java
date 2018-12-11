@@ -22,6 +22,9 @@ public class Ex {
         //zadanie2
         listOfMonthsAndDays(2018);
 
+        //zadanie 3
+        listOfMondaysInMonth(12, 2018);
+
 
     }
 
@@ -30,7 +33,7 @@ public class Ex {
         return date.getDayOfWeek().getValue() == 5 && date.getDayOfMonth() == 13;
     }
 
-    //zadanie2
+    //zadanie 2
     private static void listOfMonthsAndDays(int year) {
         for (int i = 1; i < 13; i++) {
             LocalDate date = LocalDate.of(year, i, 20);
@@ -38,4 +41,19 @@ public class Ex {
         }
     }
 
+    //zadanie 3
+
+    private static void listOfMondaysInMonth(int monthNumber, int year) {
+
+        LocalDate localDate = LocalDate.of(year, monthNumber, 1);
+        int lengthOfMonth = localDate.lengthOfMonth();
+
+        for (int i = 1; i < lengthOfMonth + 1; i++) {
+
+            LocalDate localDate2 = LocalDate.of(year, monthNumber, i);
+            if (localDate2.getDayOfWeek().getValue() == 1) {
+                System.out.println("Monday: " + localDate2.getDayOfMonth() + " " + localDate2.getMonth() + " " + localDate2.getYear());
+            }
+        }
+    }
 }
