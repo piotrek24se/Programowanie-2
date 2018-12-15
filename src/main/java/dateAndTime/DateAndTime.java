@@ -1,11 +1,13 @@
 package dateAndTime;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
+
+import static javafx.scene.input.KeyCode.V;
 
 public class DateAndTime {
 
@@ -69,11 +71,11 @@ public class DateAndTime {
         System.out.println(nowDateTime);
 
         LocalDateTime anotherDateTime
-                = LocalDateTime.of(2017, 2, 3, 6,0);
+                = LocalDateTime.of(2017, 2, 3, 6, 0);
 
         LocalDateTime anotherDateTime2 = LocalDateTime.parse("2015-02-20T06:30:00");
 
-        nowDateTime.plus(1,ChronoUnit.DAYS);
+        nowDateTime.plus(1, ChronoUnit.DAYS);
 //        nowDateTime.plusDays(1);
 
         /*
@@ -96,14 +98,64 @@ public class DateAndTime {
         String nowDateAndTimeAsString = nowDateTime.format(dtf);
         System.out.println(nowDateAndTimeAsString);
 
+        //timestamp
+
+        long myTimestamp = 1544862471L;
+        LocalDateTime myLocalDateTime =
+                LocalDateTime.ofInstant(Instant.ofEpochSecond(myTimestamp), TimeZone.getDefault().toZoneId());
+
+        System.out.println(myLocalDateTime);
+
+        //time zones
+
+        TimeZone myTimeZone = TimeZone.getDefault();
+        //wyswietlanie identyfikatora strefy
+        System.out.println(myTimeZone.toZoneId());
+        //przesuniecie w ms w stosunku do Greenwich
+        System.out.println(myTimeZone.getRawOffset());
+
+        ZoneId zoneId = ZoneId.of("Europe/Warsaw");
+        System.out.println(zoneId.getRules().getOffset(Instant.EPOCH));
+
+        Set<String> allZoneIds = ZoneId.getAvailableZoneIds();
+        System.out.println(allZoneIds.size());
+
+        //wyswietlanie listy stref czasowych z przesunieciami
+
+        for (String id : allZoneIds) {
+            System.out.println("Id: " + id + " Offset: " + ZoneId.of(id).getRules().getOffset(Instant.EPOCH));
+        }
+
+        //wyswietlanie listy stref czasowych z przesunieciami z sortowaniem po przesunięciu
+
+        Map<String, ZoneOffset> zones = new TreeMap<>();
+
+        for (String id : allZoneIds) {
+            zones.put(id, ZoneId.of(id).getRules().getOffset(Instant.EPOCH));
+        }
+
+        //metoda ze streamem
+        Stream<Entry<String, ZoneOffset>> sorted =
+                zones.entrySet()
+                        .stream()
+                        .sorted(Entry.comparingByValue());
+
+        sorted.forEach(System.out::println);
 
 
+        //druga metoda - niedokonczona
 
-
-
-
-
-
+//        public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+//            List<Entry<K, V>> list = new ArrayList<>(map.entrySet());
+//            list.sort(Entry.comparingByValue());
+//
+//            Map<K, V> result = new LinkedHashMap<>();
+//            for (Entry<K, V> entry : list) {
+//                result.put(entry.getKey(), entry.getValue());
+//            }
+//
+//            return result;
+//        }
 
 
     }
