@@ -2,6 +2,7 @@ package ex1Xml;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import org.apache.log4j.Logger;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,6 +11,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
+
+    //wazne, zeby loger byl Apache
+    final static org.apache.log4j.Logger logger = Logger.getLogger(App.class);
 
     public static void main(String[] args) throws IOException {
 
@@ -44,6 +48,7 @@ public class App {
 
             People people = new People(listOfPerson);
 
+            logger.info("User invoked main method");
             ObjectMapper objectMapper = new XmlMapper();
             objectMapper.writeValue(new FileOutputStream("output3.xml"), people);
 
@@ -52,10 +57,7 @@ public class App {
             } else if (decision.equalsIgnoreCase("nie")) {
                 addNewPerson = false;
             } else System.out.println("Wprowadz wartosc tak lub nie");
-
-
         }
-
     }
 
     private static boolean isPeselValid(String pesel) {
