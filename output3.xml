@@ -1,1 +1,7 @@
-<People><person><name>sd</name><surname>dsd</surname><pesel>93051464884</pesel></person></People>
+<People>
+    <person>
+        <name>sd</name>
+        <surname>dsd</surname>
+        <pesel>93051464884</pesel>
+    </person>
+</People>

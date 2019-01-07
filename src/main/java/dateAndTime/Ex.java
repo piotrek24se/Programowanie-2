@@ -1,6 +1,8 @@
 package dateAndTime;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 
 public class Ex {
 
@@ -55,5 +57,41 @@ public class Ex {
                 System.out.println("Monday: " + localDate2.getDayOfMonth() + " " + localDate2.getMonth() + " " + localDate2.getYear());
             }
         }
+    }
+
+    // rozwiazania z zajec
+
+    //Write an example that, for a given year, reports the length of each month within that year.
+    private static void exercise1() {
+        int year = 2018;
+
+        for (int month = 1; month <= 12; month++) {
+            int lengthOfMonth = LocalDate.of(year, month, 1).lengthOfMonth();
+
+            System.out.printf("Month: %s; Length of month: %s\n", month, lengthOfMonth);
+        }
+    }
+
+    //Write an example that, for a given month of the current year, lists all of the Mondays in that month.
+    private static void exercise2() {
+        int month = 12;
+        LocalDate date = LocalDate.now().withMonth(month).
+                with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY));
+
+        int currentMonth = month;
+        while (currentMonth == month) {
+            System.out.printf("%s%n", date);
+            date = date.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+            currentMonth = date.getMonthValue();
+        }
+    }
+
+    //Write an example that tests whether a given date occurs on Friday the 13th.
+    private static void exercise3() {
+        int year = 2018;
+        int month = 3;
+        int day = 13;
+
+        System.out.println(LocalDate.of(year, month, day).getDayOfWeek() == DayOfWeek.FRIDAY && day == 13);
     }
 }
