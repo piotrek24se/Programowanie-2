@@ -8,8 +8,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //dokonczyc
-
         List<Point> listOfPoints = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         boolean entry = true;
