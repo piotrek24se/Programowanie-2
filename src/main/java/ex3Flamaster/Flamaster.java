@@ -1,5 +1,8 @@
 package ex3Flamaster;
 
+/**
+ * Ta klasa jest odpowiedzialna za przechowywanie informacji o liscie osob
+ */
 public class Flamaster {
 
     public static void main(String[] args) {
@@ -13,6 +16,9 @@ public class Flamaster {
 
     }
 
+    /**Ta metoda sluzy do nie wiem czego...
+     * @param string Przyjmuje praramtery jakies tam
+     */
     public static void changeToNumber(String string) {
         char[] charOfString = string.toCharArray();
         int temp = 0;
