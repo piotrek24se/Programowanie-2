@@ -6,10 +6,10 @@ public class PasswordValidator {
 
     public boolean isPasswordValid (String password) {
         return hasPassword8Signs(password)
-        && consistOnlyOfLettersDigitsAndSpecialSigns(password)
-        && containsAtLeast2Digits(password)
-        && containsAtLeast1CapitalLetter(password)
-        && containsAtLeast1SpecialSign(password);
+            && consistOnlyOfLettersDigitsAndSpecialSigns(password)
+            && containsAtLeast2Digits(password)
+            && containsAtLeast1CapitalLetter(password)
+            && containsAtLeast1SpecialSign(password);
     }
 
     //metody czastkowe
